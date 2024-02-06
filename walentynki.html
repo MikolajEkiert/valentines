@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css.css">
+        <title>Walentynki</title>
+        <img src="valentines.gif" alt="gif" id="gif"> 
+    </head>
+    <body>
+        <div id="center">
+            <audio id="audio_yipiee" src="yipiee.mp3"></audio>
+            <audio id="audio_nah" src="nah.mp3"></audio>                    
+            <button id="yes" onclick="yes()" onclick="f()" class="yes"><strong>YES</strong></button>
+            <button id="no" onclick="no()" class="no"><strong>NO</strong></button>
+            <div id="myPopup" class="popup">
+                <div class="popup-content">
+                    <h1 style="color:rgb(255, 0, 179);">
+                            <strong>KOCHAM CIĘ MAJA!!! </strong>
+                        </h1>
+                    <button id="closePopup">
+                            x
+                        </button>
+                </div>
+            </div>        
+        </div>
+    </body>
+    <script>
+        function yes() {
+            var nah = document.getElementById("audio_nah");
+            nah.pause();
+            var yipiee = document.getElementById("audio_yipiee");
+            yipiee.play();
+        }
+
+        function no() {
+            var nah = document.getElementById("audio_nah");
+            nah.play();
+            var yipiee = document.getElementById("audio_yipiee");
+            yipiee.pause();
+            var w = window.innerWidth-200;
+            var h = window.innerHeight-150;
+            var b = document.getElementById("no");
+                var i = Math.floor(Math.random()*w)+1;
+                var j = Math.floor(Math.random()*h)+1;
+                b.style.left = i+"px";
+                b.style.top = j+"px";    
+            let randomWords = [ "Don't you love me?", "You don't love me anymore", "Oh PLEASE PLEASE PLEASE","HEEL NAAW", "OINK OINK", "u stupid?","WHAT ARE YOU DOING BUBU?", "PRESS YES IF YOU LIKE JACOB ELORDI" ]; 
+            var btn = document.querySelector(".no");   
+            btn.textContent=randomWords[ Math.floor(  Math.random() * randomWords.length )]
+        
+        }
+        var btn = document.querySelector(".yes");
+        btn.addEventListener("mouseover", function() {
+        let randomWords = [ "YES DADDY!", "YES CHEF!"];
+        this.textContent=randomWords[ Math.floor(  Math.random() * randomWords.length )]
+        })
+        btn.addEventListener("mouseout", function() {
+        this.textContent = "YES";
+        })
+        let mb=document.getElementById('yes');
+        mb.addEventListener("click", function () {
+            myPopup.classList.add("show");
+        });
+        closePopup.addEventListener("click", function () {
+            myPopup.classList.remove("show");
+        });
+        window.addEventListener("click", function (event) {
+            if (event.target == myPopup) {
+                myPopup.classList.remove("show");
+            }
+        });
+    </script>
+</html>
